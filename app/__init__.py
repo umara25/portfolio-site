@@ -25,3 +25,26 @@ def about():
             {"name": "Hobby Name", "image": "./static/img/placeholder.jpg"}
         ]
     )
+
+@app.route('/umar')
+def umar():
+    return render_template('umar.html', title="Umar Ahmer", url=os.getenv("URL"),
+        name="Umar Ahmer",
+        bio="Hey! I am a computer science student at McMaster University going into my second year. "
+        "I am passionate about PE and really excited" 
+        " to be a part of the MLH Fellowship program.",
+        schools=[
+            {"school": "McMaster University", "program": "Bachelor of Applied Science in Computer Science", "time": "2024-2028"}
+        ],
+        work_experiences=[
+            {"title": "Team Member", "company": "Google Developer Student Clubs", "date": "2024-present"},
+            {"title": "Programming Instructor", "company": "Code Club Canada", "date": "2023-2024"},
+            {"title": "Team Lead", "company": "3571 Mustang Robotics", "date": "2022-2024"}
+        ],
+        hobbies=[
+            {"name": "Programming & Development", "image": "./static/img/coding.jpg"},
+            {"name": "Basketball", "image": "./static/img/basketball.png"},
+            {"name": "Video Games", "image": "./static/img/videogames.jpg"}
+        ]
+    )
+
