@@ -28,7 +28,7 @@ def about():
 
 @app.route('/umar')
 def umar():
-    return render_template('umar.html', title="Umar Ahmer", url=os.getenv("URL"),
+    return render_template('about-me.html', title="Umar Ahmer", url=os.getenv("URL"),
         name="Umar Ahmer",
         bio="Hey! I am a computer science student at McMaster University going into my second year. "
         "I am passionate about PE and really excited" 
