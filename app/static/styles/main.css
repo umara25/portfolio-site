@@ -136,3 +136,15 @@ body {
 .hobby-item img {
     max-width: 250px;
 }
+
+.travel-map {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.travel-map iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    border: none;
+}
