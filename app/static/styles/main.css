@@ -106,3 +106,15 @@ body {
     font-size: 50px;
     font-weight: 700;
 }
+
+.profile-content {
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-bottom: 32px;
+}
+
+.hobby-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
