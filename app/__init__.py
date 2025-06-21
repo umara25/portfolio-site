@@ -31,6 +31,7 @@ def umar():
     return render_template('about-me.html', title="Umar Ahmer", url=os.getenv("URL"),
         name="Umar Ahmer",
         picture="./static/img/umar.jpg",
+        travel_map="https://www.google.com/maps/d/u/0/embed?mid=1T0a6Ayom7RTvFHPP1N8UDydwCpS5n9E&ehbc=2E312F&noprof=1",
         bio="Hey! I am a computer science student at McMaster University going into my second year. "
         "I am passionate about PE and really excited" 
         " to be a part of the MLH Fellowship program.",
