@@ -113,6 +113,20 @@ body {
     margin-bottom: 32px;
 }
 
+.profile-content h2 {
+    color: #1C539F;
+    border-bottom: 2px solid #1C539F;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.profile-content p {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #000000;
+    margin: 0;
+}
+
 .hobby-item {
     display: flex;
     justify-content: space-between;
