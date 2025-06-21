@@ -10,19 +10,32 @@ app = Flask(__name__)
 def index():
     return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"))
 
-@app.route('/about')
-def about():
-    return render_template('about-me.html', title="About Me", url=os.getenv("URL"),
-        name="Name",
-        bio="bio",
+@app.route('/robert')
+def robert():
+    return render_template('about-me.html', title="Robert Xing", url=os.getenv("URL"),
+        picture="./static/img/robert.jpg",
+        name="Robert Xing",
+        travel_map="https://www.google.com/maps/d/u/0/embed?mid=1oJDJsnCdi9E7MYmkzrBWCNJ_l3Qb8cw&ehbc=2E312F",
+        bio="Hi! I'm an incoming 4th year student at Western University, completing a dual degree in software engineering and Ivey HBA. "
+        "I am super excited to gain some PE experience and meet some incredibly talented people through the MLH Fellowship!",
         schools=[
-            {"school": "School Name", "program": "Program Name", "time": "YYYY-YYYY"}
+            {"school": "Western University", "program": "BESc Software Engineering and BA Honours Business Administration", "time": "Sep 2022-Apr 2027"}
         ],
         work_experiences=[
-            {"title": "Job Title", "company": "Company Name", "date": "YYYY-YYYY"}
-        ],
+            {"title": "Research Assistant, Data Scientist", "company": "Ivey Business School", "date": "Feb 2025-present"},
+            {"title": "Software Engineer Intern", "company": "Agora Tutoring", "date": "Feb 2025-Apr 2025"}
+        ]
+    )
+
+@app.route('/robert-hobbies')
+def robert_hobbies():
+    return render_template('hobbies.html', title="Robert's Hobbies", url=os.getenv("URL"),
+        name="Robert",
         hobbies=[
-            {"name": "Hobby Name", "image": "./static/img/placeholder.jpg"}
+            {"name": "Motorsports (F1 and WEC)", "image": "./static/img/wec.jpg"},
+            {"name": "Sports (Skiing, Golf, and Badminton)", "image": "./static/img/robert-ski.jpg"},
+            {"name": "Photography", "image": "./static/img/robert-photo.jpg"},
+            {"name": "Travel", "image": "./static/img/robert-travel.png"}
         ]
     )
 
