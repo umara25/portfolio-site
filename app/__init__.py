@@ -22,6 +22,6 @@ def about():
             {"title": "Job Title", "company": "Company Name", "date": "YYYY-YYYY"}
         ],
         hobbies=[
-            {"name": "Hobby Name"}
+            {"name": "Hobby Name", "image": "./static/img/placeholder.jpg"}
         ]
     )
