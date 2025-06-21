@@ -30,6 +30,7 @@ def about():
 def umar():
     return render_template('about-me.html', title="Umar Ahmer", url=os.getenv("URL"),
         name="Umar Ahmer",
+        picture="./static/img/umar.jpg",
         bio="Hey! I am a computer science student at McMaster University going into my second year. "
         "I am passionate about PE and really excited" 
         " to be a part of the MLH Fellowship program.",

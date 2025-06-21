@@ -26,7 +26,7 @@
 
     <div class="profile">
         <div id="profile-picture" class="profile-picture">
-            <img src="./static/img/logo.jpg">
+            <img src="{{ picture or './static/img/logo.jpg' }}">
         </div>
         <h1>{{ name }}</h1>
     </div>
