@@ -63,3 +63,14 @@ def umar():
         ]
     )
 
+@app.route('/umar-hobbies')
+def umar_hobbies():
+    return render_template('hobbies.html', title="Umar's Hobbies", url=os.getenv("URL"),
+        name="Umar",
+        hobbies=[
+            {"name": "Traveling (Picture is from BC, Canada)", "image": "./static/img/travel-umar.jpg"},
+            {"name": "Basketball (NBA)", "image": "static/img/basketball-umar.jpg"},
+            {"name": "Video Games (Minecraft, Valorant)", "image": "./static/img/game-umar.jpg"},
+            {"name": "Hiking", "image": "./static/img/hiking-umar.jpg"}
+        ]
+    )
