@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Personal Portfolio">
+    <meta property="og:description" content="My Personal Portfolio">
+    <meta property="og:url" content="{{ url }}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link lang='sass' rel="stylesheet" href="./static/styles/main.css">
+    <link rel='icon' href='./static/img/favicon.ico' type='image/x-icon' />
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <header class="nav-bar">
+        {% include "navigation.html" %}
+    </header>
+
+    <div class="profile-content">
+        <h2>Timeline Form</h2>
+        <form id="timeline-form">
+            <input type="text" name="name" placeholder="name" required><br>
+            <input type="email" name="email" placeholder="email" required><br>
+            <textarea name="content" placeholder="content" required></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="profile-content">
+        <h2>Posts</h2>
+        <div id="posts-container"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/api/timeline_post")
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    var container = document.getElementById("posts-container");
+                    container.innerHTML = "";
+                    var posts = data.timeline_posts;
+                    for (var i = 0; i < posts.length; i++) {
+                        var div = document.createElement("div");
+
+                        var p = document.createElement("p");
+                        p.textContent = posts[i].name + ": " + posts[i].content;
+                        div.appendChild(p);
+
+                        if (posts[i].created_at) {
+                            var time = new Date(posts[i].created_at).toLocaleString();
+                            var t = document.createElement("p");
+                            t.textContent = "Posted at: " + time;
+                            div.appendChild(t);
+                        }
+
+                        container.appendChild(div);
+                    }
+                });
+        });
+
+        document.getElementById("timeline-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var form = document.getElementById("timeline-form");
+            var formData = new FormData(form);
+            fetch("/api/timeline_post", {
+                method: "POST",
+                body: formData
+            }).then(function (response) {
+                if (response.ok) {
+                    window.location.reload(true);
+                } else {
+                    alert("Error submitting form.");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
