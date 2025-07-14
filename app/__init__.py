@@ -57,6 +57,13 @@ def hobbies():
         ]
     )
 
+@app.route('/timeline')
+def timeline():
+    post_data=get_time_line_post()
+    return render_template('timeline.html', title="Timeline",
+        posts=post_data["timeline_posts"]
+    )
+
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
     name = request.form['name']
