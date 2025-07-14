@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Personal Portfolio">
+    <meta property="og:description" content="My Personal Portfolio">
+    <meta property="og:url" content="{{ url }}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link lang='sass' rel="stylesheet" href="./static/styles/main.css">
+    <link rel='icon' href='./static/img/favicon.ico' type='image/x-icon' />
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <header class="nav-bar">
+        {% include "navigation.html" %}
+    </header>
+
+    <h2>New post</h2>
+    <form id="post-form">
+        <div class="form-row">
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+        </div>
+        <textarea name="content" placeholder="Write your post here..." required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Robert's Timeline</h2>
+    <div id="post-list">
+        {% for post in posts %}
+        <div class="post">
+            <strong>{{ post.name }}</strong> (<span>{{ post.email }}</span>)
+            <p>{{ post.content }}</p>
+            <div class="created-at">{{ post.created_at }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        const form = document.getElementById('post-form');
+
+        async function fetchPosts() {
+            const res = await fetch('/api/timeline_post');
+            if (res.ok) {
+                const data = await res.json();
+                const postList = document.getElementById('post-list');
+                postList.innerHTML = '';
+                data.timeline_posts.forEach(post => {
+                    const postDiv = document.createElement('div');
+                    postDiv.className = 'post';
+                    postDiv.innerHTML = `
+                        <div class="post-header"><strong>${post.name}</strong> (<span>${post.email}</span>)</div>
+                        <p>${post.content}</p>
+                        <div class="created-at">${new Date(post.created_at).toLocaleString()}</div>
+                    `;
+                    postList.appendChild(postDiv);
+                });
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            const res = await fetch('/api/timeline_post', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (res.ok) {
+                form.reset();
+                fetchPosts();
+            } else {
+                alert('failed to post. please try again.');
+            }
+        });
+
+        fetchPosts();
+    </script>
+
+</body>
+
+</html>
