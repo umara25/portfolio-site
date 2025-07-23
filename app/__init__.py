@@ -9,28 +9,6 @@ from playhouse.shortcuts import model_to_dict
 load_dotenv()
 app = Flask(__name__)
 
-mydb = MySQLDatabase(
-    os.getenv("MYSQL_DATABASE"),
-    host=os.getenv("MYSQL_HOST"),
-    user=os.getenv("MYSQL_USER"),
-    password=os.getenv("MYSQL_PASSWORD"),
-    port=3306,
-)
-
-
-class TimelinePost(Model):
-    name = CharField()
-    email = CharField()
-    content = TextField()
-    created_at = DateTimeField(default=datetime.datetime.now)
-
-    class Meta:
-        database = mydb
-
-
-mydb.connect()
-mydb.create_tables([TimelinePost])
-
 if os.getenv("TESTING") == "true":
     print("Running in test mode")
     mydb = SqliteDatabase("file:memory?mode=memory&cache=shared", uri=True)
@@ -43,6 +21,17 @@ else:
         port=3306,
     )
 
+class TimelinePost(Model):
+    name = CharField()
+    email = CharField()
+    content = TextField()
+    created_at = DateTimeField(default=datetime.datetime.now)
+
+    class Meta:
+        database = mydb
+
+mydb.connect()
+mydb.create_tables([TimelinePost])
 
 @app.route("/")
 def robert():
