@@ -22,10 +22,10 @@ services:
 
   nginx:
     container_name: nginx
-    image: jonasal/nginx-cerbot
+    image: jonasal/nginx-certbot
     restart: always
     environment:
-      - CERBOT_EMAIL=name@example.com
+      - CERTBOT_EMAIL=name@example.com
     ports:
       - 80:80
       - 443:443
