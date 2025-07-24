@@ -58,7 +58,7 @@
                     const postDiv = document.createElement('div');
                     postDiv.className = 'post';
                     postDiv.innerHTML = `
-                        <div class="post-header"><strong>${post.name}</strong> (<span>${post.email}</span>)</div>
+                        <div class="post-header"><strong>${post.name}</strong> <span>(${post.email})</span></div>
                         <p>${post.content}</p>
                         <div class="created-at">${new Date(post.created_at).toLocaleString()}</div>
                     `;
