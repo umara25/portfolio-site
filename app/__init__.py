@@ -83,7 +83,7 @@ def umar():
             {"school": "McMaster University", "program": "Bachelor of Applied Science in Computer Science", "time": "2024-2028"}
         ],
         work_experiences=[
-            {"title": "Team Member", "company": "Google Developer Student Clubs", "date": "2024-present"},
+            {"title": "Team Lead", "company": "Google Developer Groups", "date": "2024-present"},
             {"title": "Programming Instructor", "company": "Code Club Canada", "date": "2023-2024"},
             {"title": "Team Lead", "company": "3571 Mustang Robotics", "date": "2022-2024"}
         ],

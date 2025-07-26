@@ -4,12 +4,6 @@ cd ~/portfolio-site
 
 git fetch && git reset origin/main --hard
 
-python -m venv python3-virtualenv
+docker compose -f docker-compose.prod.yml dow
 
-source python3-virtualenv/bin/activate
-
-pip install -r requirements.txt
-
-systemctl restart myportfolio
-
-
+docker compose -f docker-compose.prod.yml up -d --build
